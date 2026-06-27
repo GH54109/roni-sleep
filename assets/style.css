@@ -545,26 +545,36 @@ section { padding-block: clamp(3.5rem, 8vw, 6rem); }
 .brand-name { font-family: var(--font-script); font-size: 1.55rem; font-weight: 700; letter-spacing: .01em; }
 .brand-sub  { margin-top: -2px; }
 
-/* מסגרת הלוגו ב-Hero */
+/* מסגרת הלוגו ב-Hero — כשהקובץ קיים מציגים אותו כמדליון עגול שלם */
 .brand-frame {
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: 430px;
   margin-inline: auto;
+}
+.brand-frame .brand-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+.brand-frame .brand-fallback { display: none; }
+
+/* גיבוי טקסטואלי (כשאין עדיין קובץ לוגו) */
+.brand-frame.noimg {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: grid;
   place-items: center;
+  text-align: center;
   background:
     radial-gradient(120% 120% at 50% 30%, #FFFFFF 0%, var(--primary-soft) 70%, var(--bg-2) 100%);
   box-shadow: var(--shadow);
   border: 6px solid #fff;
   overflow: hidden;
 }
-.brand-frame .brand-img { width: 100%; height: 100%; object-fit: cover; }
-.brand-frame .brand-fallback { display: none; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; }
-.brand-frame.noimg .brand-img { display: none; }
-.brand-frame.noimg .brand-fallback { display: flex; }
+.brand-frame.noimg .brand-fallback { display: flex; flex-direction: column; align-items: center; padding: 1.5rem; }
 .brand-fallback .script { font-family: var(--font-script); font-size: clamp(2.4rem, 7vw, 3.4rem); font-weight: 700; color: var(--ink); line-height: 1; }
 .brand-fallback .sub { margin-top: .4rem; font-size: 1.1rem; color: var(--primary-deep); font-weight: 600; }
 .brand-fallback .heart { color: var(--primary); font-size: 1.4rem; margin: .5rem 0; }
