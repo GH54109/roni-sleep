@@ -4,7 +4,7 @@
 
 /* --- מספר הוואטסאפ של רוני (לעריכה) ---
    בפורמט בינלאומי ללא + וללא 0 מוביל. דוגמה: 972501234567 */
-window.RONI_WHATSAPP = "972500000000";
+window.RONI_WHATSAPP = "972527807377";
 
 document.addEventListener("DOMContentLoaded", function () {
 

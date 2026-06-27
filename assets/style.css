@@ -5,26 +5,26 @@
    ========================================================================== */
 
 :root {
-  /* רקעים ומשטחים */
-  --bg:           #FAF5EF;   /* שמנת חמה */
-  --bg-2:         #F1E7DB;   /* שמנת כהה מעט */
+  /* רקעים ומשטחים — שמנת-אפרסק רך, כמו רקע הלוגו */
+  --bg:           #FBF3ED;
+  --bg-2:         #F6E7DD;
   --surface:      #FFFFFF;
-  --surface-soft: #FCF8F3;
+  --surface-soft: #FDF7F2;
 
-  /* טקסט */
-  --ink:        #38343F;     /* כמעט-שחור רך */
-  --ink-soft:   #585360;
-  --muted:      #8C8794;
-  --line:       #ECE1D4;     /* קווי הפרדה עדינים */
+  /* טקסט — חום חם, כמו הכיתוב "Baby Vibes" */
+  --ink:        #4A352A;
+  --ink-soft:   #6E594B;
+  --muted:      #9C8A7D;
+  --line:       #EFE0D4;     /* קווי הפרדה עדינים */
 
-  /* צבעי מותג */
-  --primary:      #6E93B8;   /* תכלת מעומעם — רוגע, לילה */
-  --primary-deep: #4E7295;
-  --primary-soft: #E3ECF4;
-  --accent:       #E5A498;   /* ורד-אפרסק — חום, תינוקות */
-  --accent-soft:  #F8E6E1;
-  --gold:         #E4BE6C;   /* זהב כוכבים */
-  --sage:         #A7C3A4;   /* מרווה רכה */
+  /* צבעי מותג — אפרסק/קורל + ירוק מרווה (מתוך הלוגו) */
+  --primary:      #DD9A82;   /* אפרסק-קורל */
+  --primary-deep: #B86A4E;   /* טרהקוטה — כפתורים וקישורים */
+  --primary-soft: #F8E7DE;
+  --accent:       #8FA77F;   /* ירוק מרווה */
+  --accent-soft:  #E7EDDF;
+  --gold:         #E0A07F;   /* אפרסק חמים */
+  --sage:         #8FA77F;
 
   /* מידות */
   --maxw:    1120px;
@@ -32,14 +32,15 @@
   --radius-sm: 16px;
   --gap:     clamp(1rem, 2.5vw, 2rem);
 
-  /* צללים */
-  --shadow:      0 22px 48px -26px rgba(60, 72, 96, .40);
-  --shadow-soft: 0 14px 34px -20px rgba(60, 72, 96, .26);
-  --shadow-card: 0 10px 26px -18px rgba(60, 72, 96, .30);
+  /* צללים — גוון חום חמים */
+  --shadow:      0 22px 48px -26px rgba(96, 70, 52, .40);
+  --shadow-soft: 0 14px 34px -20px rgba(96, 70, 52, .24);
+  --shadow-card: 0 10px 26px -18px rgba(96, 70, 52, .28);
 
   /* טיפוגרפיה */
-  --font-head: "Frank Ruhl Libre", "Times New Roman", serif;
-  --font-body: "Assistant", "Segoe UI", system-ui, sans-serif;
+  --font-head:   "Frank Ruhl Libre", "Times New Roman", serif;
+  --font-body:   "Assistant", "Segoe UI", system-ui, sans-serif;
+  --font-script: "Dancing Script", "Frank Ruhl Libre", cursive;
 }
 
 /* ----- בסיס ----- */
@@ -534,3 +535,74 @@ section { padding-block: clamp(3.5rem, 8vw, 6rem); }
   .service-detail { grid-template-columns: 1fr; }
   .hero-trust { gap: 1rem; }
 }
+
+/* ==========================================================================
+   מותג Baby Vibes — לוגו, מדבקות תפקיד, כרטיס מוטו
+   ========================================================================== */
+
+/* מונוגרמה קטנה בכותרת */
+.brand .logo svg { color: var(--primary-deep); }
+.brand-name { font-family: var(--font-script); font-size: 1.55rem; font-weight: 700; letter-spacing: .01em; }
+.brand-sub  { margin-top: -2px; }
+
+/* מסגרת הלוגו ב-Hero */
+.brand-frame {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 120% at 50% 30%, #FFFFFF 0%, var(--primary-soft) 70%, var(--bg-2) 100%);
+  box-shadow: var(--shadow);
+  border: 6px solid #fff;
+  overflow: hidden;
+}
+.brand-frame .brand-img { width: 100%; height: 100%; object-fit: cover; }
+.brand-frame .brand-fallback { display: none; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; }
+.brand-frame.noimg .brand-img { display: none; }
+.brand-frame.noimg .brand-fallback { display: flex; }
+.brand-fallback .script { font-family: var(--font-script); font-size: clamp(2.4rem, 7vw, 3.4rem); font-weight: 700; color: var(--ink); line-height: 1; }
+.brand-fallback .sub { margin-top: .4rem; font-size: 1.1rem; color: var(--primary-deep); font-weight: 600; }
+.brand-fallback .heart { color: var(--primary); font-size: 1.4rem; margin: .5rem 0; }
+.brand-fallback .roles { margin-top: .3rem; font-size: .82rem; color: var(--muted); }
+
+/* מדבקות תפקיד מתחת לכותרת ה-Hero */
+.role-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.3rem; }
+.role-pills span {
+  font-size: .85rem; font-weight: 600; color: var(--ink-soft);
+  background: var(--surface); border: 1px solid var(--line);
+  padding: .4rem .9rem; border-radius: 999px;
+}
+.role-pills span::before { content: "🤍"; margin-inline-end: .35rem; font-size: .8em; }
+
+/* כרטיס מוטו (במקום תמונה באודות) */
+.motto-card {
+  position: relative;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(420px 220px at 80% 0%, var(--accent-soft), transparent 60%),
+    radial-gradient(420px 240px at 0% 100%, var(--primary-soft), transparent 60%),
+    var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+.motto-card .badge {
+  width: 70px; height: 70px; border-radius: 50%;
+  display: grid; place-items: center; margin: 0 auto 1.1rem;
+  background: #fff; box-shadow: var(--shadow-card);
+}
+.motto-card .script { font-family: var(--font-script); font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 700; color: var(--ink); line-height: 1.3; }
+.motto-card .sub { margin-top: .8rem; color: var(--primary-deep); font-weight: 600; }
+.motto-card .leaf { position: absolute; opacity: .5; }
+.motto-card .leaf.l1 { inset-block-start: 14px; inset-inline-start: 16px; }
+.motto-card .leaf.l2 { inset-block-end: 14px; inset-inline-end: 16px; transform: rotate(180deg); }
