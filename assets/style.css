@@ -616,3 +616,43 @@ section { padding-block: clamp(3.5rem, 8vw, 6rem); }
 .motto-card .leaf { position: absolute; opacity: .5; }
 .motto-card .leaf.l1 { inset-block-start: 14px; inset-inline-start: 16px; }
 .motto-card .leaf.l2 { inset-block-end: 14px; inset-inline-end: 16px; transform: rotate(180deg); }
+
+/* ==========================================================================
+   עקרונות הגישה + כרטיסי סדנאות לפי גיל
+   ========================================================================== */
+.principles { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+.principles span {
+  font-size: .92rem; font-weight: 600; color: var(--ink-soft);
+  background: var(--surface); border: 1px solid var(--line);
+  padding: .5rem 1rem; border-radius: 999px;
+}
+.principles span::before { content: "🤍"; margin-inline-end: .4rem; font-size: .85em; }
+
+.workshop-card { display: flex; flex-direction: column; }
+.workshop-card .age {
+  font-family: var(--font-head); font-weight: 700;
+  font-size: 1.6rem; color: var(--primary-deep); line-height: 1.1;
+}
+.workshop-card .count {
+  align-self: flex-start;
+  font-size: .8rem; font-weight: 600; color: var(--accent);
+  background: var(--accent-soft); padding: .25rem .8rem;
+  border-radius: 999px; margin: .55rem 0 1.1rem;
+}
+.workshop-list { counter-reset: w; list-style: none; margin: 0; padding: 0; }
+.workshop-list li {
+  position: relative;
+  padding: .5rem 0;
+  padding-inline-start: 2.1rem;
+  font-size: .95rem; color: var(--ink-soft);
+  border-top: 1px dashed var(--line);
+}
+.workshop-list li:first-child { border-top: 0; }
+.workshop-list li::before {
+  counter-increment: w; content: counter(w);
+  position: absolute; inset-inline-start: 0; top: .55rem;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--primary-soft); color: var(--primary-deep);
+  font-size: .78rem; font-weight: 700;
+  display: grid; place-items: center;
+}
