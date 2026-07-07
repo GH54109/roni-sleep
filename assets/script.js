@@ -1,9 +1,8 @@
 /* ==========================================================================
-   רוני · סקריפט קל ונגיש (ללא ספריות חיצוניות)
+   Baby Vibes · סקריפט קל ונגיש (ללא ספריות חיצוניות)
    ========================================================================== */
 
-/* --- מספר הוואטסאפ של רוני (לעריכה) ---
-   בפורמט בינלאומי ללא + וללא 0 מוביל. דוגמה: 972501234567 */
+/* מספר הוואטסאפ (בינלאומי, ללא + וללא 0 מוביל) */
 window.RONI_WHATSAPP = "972527807377";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -25,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ----- עדכון קישורי וואטסאפ לפי המספר שהוגדר ----- */
+  /* ----- קישורי וואטסאפ ----- */
   document.querySelectorAll("[data-wa]").forEach(function (el) {
-    var text = encodeURIComponent(el.getAttribute("data-wa") || "היי רוני, אשמח לשמוע פרטים על הליווי 🙂");
+    var text = encodeURIComponent(el.getAttribute("data-wa") || "היי רוני, אשמח לשמוע פרטים 🙂");
     el.setAttribute("href", "https://wa.me/" + window.RONI_WHATSAPP + "?text=" + text);
   });
 
@@ -44,15 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
     reveals.forEach(function (r) { r.classList.add("in"); });
   }
 
-  /* ----- בלוקי-תמונות: מציגים רק כשנטענת תמונה אמיתית (אחרת נשארים מוסתרים) ----- */
-  document.querySelectorAll("[data-photoblock] img").forEach(function (img) {
-    function reveal() {
-      var block = img.closest("[data-photoblock]");
-      if (block) block.classList.add("has-photos");
-    }
-    if (img.complete && img.naturalWidth > 0) reveal();
-    else img.addEventListener("load", reveal);
-    /* אם קובץ חסר — ה-onerror שב-HTML מסיר את האריח הבודד */
+  /* ----- אקורדיון שאלות: פותחים אחד — סוגרים את השאר ----- */
+  var faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach(function (item) {
+    item.addEventListener("toggle", function () {
+      if (item.open) {
+        faqItems.forEach(function (other) {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
   });
 
   /* ----- טופס יצירת קשר → פתיחת וואטסאפ עם הודעה מוכנה ----- */
@@ -65,15 +65,13 @@ document.addEventListener("DOMContentLoaded", function () {
       var baby  = (form.elements["baby"].value  || "").trim();
       var msg   = (form.elements["message"].value || "").trim();
 
-      var lines = ["היי רוני! הגעתי דרך האתר 🙂"];
+      var lines = ["היי רוני! הגעתי דרך האתר של Baby Vibes 🙂"];
       if (name)  lines.push("שמי: " + name);
       if (phone) lines.push("טלפון: " + phone);
       if (baby)  lines.push("גיל התינוק/ת: " + baby);
-      if (msg)   lines.push("");
-      if (msg)   lines.push(msg);
+      if (msg)   { lines.push(""); lines.push(msg); }
 
-      var url = "https://wa.me/" + window.RONI_WHATSAPP +
-                "?text=" + encodeURIComponent(lines.join("\n"));
+      var url = "https://wa.me/" + window.RONI_WHATSAPP + "?text=" + encodeURIComponent(lines.join("\n"));
       window.open(url, "_blank");
     });
   }
