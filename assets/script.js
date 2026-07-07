@@ -44,6 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
     reveals.forEach(function (r) { r.classList.add("in"); });
   }
 
+  /* ----- בלוקי-תמונות: מציגים רק כשנטענת תמונה אמיתית (אחרת נשארים מוסתרים) ----- */
+  document.querySelectorAll("[data-photoblock] img").forEach(function (img) {
+    function reveal() {
+      var block = img.closest("[data-photoblock]");
+      if (block) block.classList.add("has-photos");
+    }
+    if (img.complete && img.naturalWidth > 0) reveal();
+    else img.addEventListener("load", reveal);
+    /* אם קובץ חסר — ה-onerror שב-HTML מסיר את האריח הבודד */
+  });
+
   /* ----- טופס יצירת קשר → פתיחת וואטסאפ עם הודעה מוכנה ----- */
   var form = document.getElementById("contact-form");
   if (form) {
