@@ -16,7 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
     links.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () { links.classList.remove("open"); });
+      a.addEventListener("click", function () {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
     });
   }
 
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ----- קישורי וואטסאפ ----- */
+  /* ----- קישורי וואטסאפ (Hero / יצירת קשר / פוטר / פס תחתון) ----- */
   document.querySelectorAll("[data-wa]").forEach(function (el) {
     var text = encodeURIComponent(el.getAttribute("data-wa") || "היי רוני, אשמח לשמוע פרטים 🙂");
     el.setAttribute("href", "https://wa.me/" + window.RONI_WHATSAPP + "?text=" + text);
@@ -58,17 +61,19 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ----- טופס יצירת קשר → פתיחת וואטסאפ עם הודעה מוכנה ----- */
   var form = document.getElementById("contact-form");
   if (form) {
+    var val = function (n) {
+      var el = form.elements[n];
+      return el && el.value ? el.value.trim() : "";
+    };
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var name  = (form.elements["name"].value  || "").trim();
-      var phone = (form.elements["phone"].value || "").trim();
-      var baby  = (form.elements["baby"].value  || "").trim();
-      var msg   = (form.elements["message"].value || "").trim();
+      var name  = val("name");
+      var phone = val("phone");
+      var msg   = val("message");
 
       var lines = ["היי רוני! הגעתי דרך האתר של Baby Vibes 🙂"];
       if (name)  lines.push("שמי: " + name);
       if (phone) lines.push("טלפון: " + phone);
-      if (baby)  lines.push("גיל התינוק/ת: " + baby);
       if (msg)   { lines.push(""); lines.push(msg); }
 
       var url = "https://wa.me/" + window.RONI_WHATSAPP + "?text=" + encodeURIComponent(lines.join("\n"));
