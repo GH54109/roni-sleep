@@ -1,0 +1,17 @@
+{
+  "name": "Baby Vibes — רוני לוי",
+  "short_name": "Baby Vibes",
+  "description": "ליווי התפתחותי ועיסוי תינוקות עם רוני לוי",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "/roni-sleep/",
+  "scope": "/roni-sleep/",
+  "display": "standalone",
+  "background_color": "#FBF7F1",
+  "theme_color": "#FBF7F1",
+  "icons": [
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

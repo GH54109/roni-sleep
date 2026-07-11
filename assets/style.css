@@ -140,6 +140,7 @@ h3 { font-size: clamp(1.3rem, 3.4vw, 1.7rem); }
   margin: 0; border-radius: var(--radius); overflow: hidden;
   background: var(--blush); box-shadow: var(--shadow);
 }
+figure picture { display: block; width: 100%; height: 100%; }
 .media img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ==========================================================================
@@ -311,9 +312,23 @@ h3 { font-size: clamp(1.3rem, 3.4vw, 1.7rem); }
 }
 
 .workshop-note {
-  max-width: var(--maxw-narrow); margin: clamp(1.7rem, 4vw, 2.6rem) auto 0;
+  max-width: var(--maxw-narrow); margin: clamp(1.4rem, 3vw, 2rem) auto 0;
   text-align: center; font-size: 1.06rem; color: var(--ink); font-family: var(--font-head);
 }
+.workshop-place {
+  max-width: var(--maxw-narrow); margin: clamp(1.6rem, 4vw, 2.4rem) auto 0;
+  text-align: center; font-size: .98rem; color: var(--muted); line-height: 1.7;
+}
+/* מפגש פרטני — בלוק משני, עדין, שלא בולט יותר מהסדנאות */
+.private-note {
+  max-width: var(--maxw-narrow); margin: clamp(1.8rem, 4vw, 2.6rem) auto 0;
+  text-align: center; background: var(--surface-soft);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+}
+.private-note h3 { font-size: clamp(1.2rem, 2.6vw, 1.5rem); margin-bottom: .4rem; }
+.private-note p { margin: 0 0 .8rem; color: var(--ink-soft); max-width: 46ch; margin-inline: auto; }
+.private-note .tag { justify-content: center; }
 
 /* ==========================================================================
    לפני שניפגש
@@ -379,6 +394,13 @@ h3 { font-size: clamp(1.3rem, 3.4vw, 1.7rem); }
 }
 .contact-form textarea { resize: vertical; min-height: 110px; }
 .form-note { font-size: .85rem; color: var(--muted); margin: .8rem 0 0; text-align: center; }
+
+/* משפט סיום חם לפני הפוטר */
+.closing-line {
+  max-width: 42ch; margin: clamp(2.4rem, 6vw, 3.6rem) auto 0;
+  text-align: center; font-family: var(--font-head);
+  font-size: clamp(1.15rem, 2.8vw, 1.5rem); line-height: 1.6; color: var(--clay-deep);
+}
 
 /* ==========================================================================
    פוטר

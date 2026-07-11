@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://gh54109.github.io/roni-sleep/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://gh54109.github.io/roni-sleep/assets/why-smile.jpg</image:loc>
+      <image:title>רוני מלווה תינוק מחייך במפגש Baby Vibes</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gh54109.github.io/roni-sleep/assets/tummy.jpg</image:loc>
+      <image:title>עיסוי תינוקות בהדרכת רוני לוי</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://gh54109.github.io/roni-sleep/assets/workshops-group.jpg</image:loc>
+      <image:title>סדנת ליווי התפתחותי בקבוצה</image:title>
+    </image:image>
+  </url>
+</urlset>

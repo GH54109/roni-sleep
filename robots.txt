@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gh54109.github.io/roni-sleep/sitemap.xml

@@ -5,6 +5,11 @@
 /* מספר הוואטסאפ (בינלאומי, ללא + וללא 0 מוביל) */
 window.RONI_WHATSAPP = "972527807377";
 
+/* מדידת אירועים — פועלת רק אם חובר Google Analytics (gtag). אחרת לא עושה כלום. */
+function bvTrack(name, params) {
+  if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ----- תפריט נייד ----- */
@@ -31,6 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-wa]").forEach(function (el) {
     var text = encodeURIComponent(el.getAttribute("data-wa") || "היי רוני, אשמח לשמוע פרטים 🙂");
     el.setAttribute("href", "https://wa.me/" + window.RONI_WHATSAPP + "?text=" + text);
+    el.addEventListener("click", function () { bvTrack("whatsapp_click"); });
+  });
+
+  /* ----- מדידת לחיצות חיוג וכפתורי CTA ----- */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
+    el.addEventListener("click", function () { bvTrack("call_click"); });
+  });
+  document.querySelectorAll('a[href="#contact"]').forEach(function (el) {
+    el.addEventListener("click", function () { bvTrack("cta_click"); });
   });
 
   /* ----- חשיפה הדרגתית בגלילה ----- */
@@ -76,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (phone) lines.push("טלפון: " + phone);
       if (msg)   { lines.push(""); lines.push(msg); }
 
+      bvTrack("contact_form_submit");
       var url = "https://wa.me/" + window.RONI_WHATSAPP + "?text=" + encodeURIComponent(lines.join("\n"));
       window.open(url, "_blank");
     });
